@@ -147,7 +147,7 @@ header div div .active {
     border-bottom: 1px solid #FFFFFF;
 }
 
-.current-city > div .image-weather {
+.image-weather {
     display: block;
     background-image: url("./assets/images/sun-cloud-angled-rain.png");
     background-position: center;
@@ -215,4 +215,13 @@ header div div .active {
     letter-spacing: -0.24px;
     text-transform: capitalize;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 370px) {
+    .current-city {
+        width: 100vw;
+    }
+    .image-weather {
+        width: 70vw;
+    }
 }
