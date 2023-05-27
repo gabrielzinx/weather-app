@@ -1,21 +1,28 @@
-const http = require("http");
+const http = require('http');
+const URL = require('url');
 const port = 3000;
 
-const server = http.createServer((req, res) => {
-    const allowedOrigins = ['http://weather-app-gab-and-gui.vercel.app', 'http://localhost:5500']; // Lista de origens permitidas
+const CLIENT_API_KEY = process.env.CLIENT_WEATHER_KEY;
 
-    const origin = req.headers.origin;
-  
-    if (allowedOrigins.includes(origin)) {
-      // Permite a chamada da API
-      res.setHeader('Access-Control-Allow-Origin', origin);
-      res.writeHead(200);
-      res.end(`API response ${process.env.CLIENT_WEATHER_KEY}`);
-    } else {
-      // Retorna erro para origens não permitidas
-      res.writeHead(403);
-      res.end('Forbidden');
-    }
+async function getWeatherCity(city) {
+    const response = await fetch(`https://api.hgbrasil.com/weather?key=${CLIENT_API_KEY}&city_name=${city}`);
+    return response.json();
+};
+
+const server = http.createServer(async (req, res) => {
+
+    // Configuração dos cabeçalhos CORS
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    const { city } = URL.parse(req.url, true).query;
+
+    if (!city)
+        return res.end(JSON.stringify({error: "no city specified!"}));
+
+    const data = await getWeatherCity(city);
+
+    res.end(JSON.stringify(data));
+
 });
 
-server.listen(port, console.log(`API is running in port: ${port}`));
+server.listen(port, console.log(`API is running on port: ${port}`));
