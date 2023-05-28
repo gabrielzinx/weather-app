@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,17 +7,19 @@
     <title>Weather App</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
-
     <main>
-        <h1 class="text"> Welcome a Manage Location </h1>
+        <header>
+            <button class="icon-back"></button>
+            <h1 class="text">Manage Location </h1>
+        </header>
         <div class="input-city">
             <i class="icon-search"></i>
-            <input id="search_city" class="search_city" type="text" placeholder="Your City, UF">
+            <input id="search-city" class="search-city" type="text" placeholder="Your City, UF">
         </div>
+        <ul id="list-cities" class="list-cities">
+        </ul>
     </main>
     <script src="./script.js"></script>
 </body>
-
 </html>

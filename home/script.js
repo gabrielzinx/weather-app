@@ -26,6 +26,11 @@ async function main() {
     prevText.innerText = `${data.forecast[1].rain_probability}%`;
     pressureText.innerText = `${data.forecast[1].max}°`;
     humidityText.innerText = `${data.humidity}%`;
+
+    if (data.city_name) {
+        addingDataToLocalStorage(data);
+    }
+    
 }
 
 function getCityFromURL() {
@@ -43,6 +48,18 @@ async function getDataFromCity() {
     const data = await response.json();
 
     return data.results;
+}
+
+function addingDataToLocalStorage(data) {
+    const localData = JSON.parse(localStorage.getItem("cities"));
+
+    const hasCity = localData.find(city => city.city_name === data.city_name);
+
+    if (hasCity) return;
+
+    localData.push(data);
+
+    localStorage.setItem("cities", JSON.stringify(localData));
 }
 
 main();

@@ -4,64 +4,15 @@
     --font-default: "Poppins", "Arial", "Helvetica", "sans-serif";
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
-}
-
-.current-city {
-    display: flex;
-    flex-direction: column;
-    width: 358px;
-    height: 565px;
-    background-image: linear-gradient(180deg, #62B8F6 0%, #2C79C1 77.96%);
-    border-radius: 30px;
-}
-
-.current-city header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(180deg, #62B8F6 0%, #2C79C1 77.96%);
-    height: 100vh;
-    flex-direction: column;
-}
-
-main {
-    width: 500px;
-}
-
-.text {
-    font-family: Poppins;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 20px;
-    letter-spacing: -0.23999999463558197px;
+.icon-back {
+    display: block;
+    background-image: url("./assets/icons/icon-back.svg");
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    height: 32px;
+    width: 32px;
 }
 
 .icon-search {
@@ -76,11 +27,94 @@ main {
     border-radius: 16px;
 }
 
+.icon-cloud {
+    display: block;
+    background-image: url("./assets/icons/icon-cloud.svg");
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 32px;
+    width: 32px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    padding-inline: 100px;
+    padding-block: 50px;
+    width: 100vw;
+    height: 100%;
+}
+
+h1 {
+    font-family: var(--font-default);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 20px;
+    letter-spacing: -0.24px;
+    color: #FFFFFF;
+    width: 80%;
+    text-align: start;
+}
+
+h2 {
+    font-family: var(--font-default);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.24px;
+    color: #1B2541;
+}
+
+p {
+    font-family: var(--font-default);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: -0.24px;
+    color: #545B70;    
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #62B8F6 0%, #2C79C1 77.96%);
+    width: 390px;
+    height: 100%;
+    border-radius: 30px;
+    padding-block: 32px;
+    gap: 32px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
 .input-city {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 500px;
+    width: 80%;
     height: 40px;
 }
 
@@ -90,4 +124,50 @@ input {
     width: 100%;
     height: 100%;
     border-radius: 20px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    gap: 20px;
+}
+
+ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 16px;
+    width: 80%;
+    height: 80px;
+    background: #FFFFFF;
+    border-radius: 16px;
+}
+
+ul li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+ul li div:nth-child(2) p {
+    text-align: center;
+}
+
+@media screen and (max-width: 390px) {
+    body {
+        padding: 0px;
+    }
+    main {
+        width: 100vw;
+        border-radius: 0px;
+    }
+    h1 {
+        text-align: center;
+    }
 }

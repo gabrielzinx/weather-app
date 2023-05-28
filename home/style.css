@@ -218,8 +218,14 @@ header div div .active {
 }
 
 @media screen and (max-width: 370px) {
+    body {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
     .current-city {
         width: 100vw;
+        border-radius: 0;
     }
     .image-weather {
         width: 70vw;
