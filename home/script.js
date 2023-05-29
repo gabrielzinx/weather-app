@@ -51,7 +51,7 @@ async function getDataFromCity() {
 }
 
 function addingDataToLocalStorage(data) {
-    const localData = JSON.parse(localStorage.getItem("cities"));
+    const localData = JSON.parse(localStorage.getItem("cities")) || [];
 
     const hasCity = localData.find(city => city.city_name === data.city_name);
 
