@@ -104,6 +104,15 @@ for (let i = 0; i < itensCities.length; i++) {
         for (let i = 0; i < title.length; i++) {
             title[i].style.color = "#1B2541"
         }
+        if (deltaX > positionLimitX - 30 || deltaX < -positionLimitX + 30) {
+            const currentCity = item.childNodes[1].firstChild.innerText;
+            const dataCity = JSON.parse(localStorage.getItem("cities"));
+            dataCity.splice(dataCity.findIndex(city => city.city_name === currentCity), 1)
+            localStorage.setItem("cities", JSON.stringify(dataCity));
+            removeAllCities();
+            loadCities();
+            tradeProprietary();
+        }
         window.document.removeEventListener('mousemove', handleMouseMove);
     }
 
@@ -143,4 +152,8 @@ for (let i = 0; i < itensCities.length; i++) {
     item.addEventListener('mouseleave', resetItem);
     item.addEventListener('touchend', resetItem);
     item.addEventListener('touchcancel', resetItem);
+}
+
+function removeAllCities() {
+    listCities.innerHTML = "";
 }
