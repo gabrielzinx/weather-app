@@ -131,7 +131,7 @@ ul {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    height: 60vh;
     gap: 20px;
 }
 
@@ -145,6 +145,8 @@ ul li {
     height: 80px;
     background: #FFFFFF;
     border-radius: 16px;
+    cursor: grab;
+    user-select: none;
 }
 
 ul li div:nth-child(2) {
@@ -157,6 +159,10 @@ ul li div:nth-child(2) {
 
 ul li div:nth-child(2) p {
     text-align: center;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 @media screen and (max-width: 390px) {
