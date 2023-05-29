@@ -219,7 +219,6 @@ header div div .active {
 
 @media screen and (max-width: 370px) {
     body {
-        display: flex;
         align-items: flex-start;
         justify-content: flex-start;
     }
@@ -229,5 +228,11 @@ header div div .active {
     }
     .image-weather {
         width: 70vw;
+    }
+}
+
+@media screen and (max-height: 560px) {
+    body {
+        align-items: flex-start;
     }
 }

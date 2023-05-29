@@ -25,6 +25,7 @@ function tradeProprietary() {
 
 function createElementWeatherCity(dataCity) {
     const li = window.document.createElement("li");
+    const span = window.document.createElement("span");
     const div1 = window.document.createElement("div");
     const div2 = window.document.createElement("div");
     const h2 = window.document.createElement("h2");
@@ -36,11 +37,13 @@ function createElementWeatherCity(dataCity) {
     p1.innerText = `${dataCity.forecast[1].min}°/${dataCity.forecast[1].max}°`;
     p2.innerText = dataCity.forecast[1].description;
     i.classList.add("icon-cloud");
+    span.classList.add("icon-trash");
 
     div1.appendChild(h2);
     div1.appendChild(p1);
     div2.appendChild(i);
     div2.appendChild(p2);
+    li.appendChild(span);
     li.appendChild(div1);
     li.appendChild(div2);
 
@@ -62,6 +65,7 @@ function fim(elemento) {
 
 for (let i = 0; i < itensCities.length; i++) {
     const item = itensCities[i];
+    const positionLimitX = 200
     let startX = 0;
     let deltaX = 0;
 
@@ -87,13 +91,52 @@ for (let i = 0; i < itensCities.length; i++) {
         item.style.transform = 'none';
         item.style.transition = 'all 0.8s ease-in-out';
         item.style.transform = `translateX(${0}px)`;
+        item.style.backgroundColor = "#fff"
+        item.style.boxShadow = "0px 0px 0px rgba(0, 0, 0, 0.5)";
+        item.style.backgroundColor = "#fff"
+        item.style.boxShadow = "none";
+        item.style.backgroundColor = "#fff"
+        const params = item.getElementsByTagName("p");
+        for (let i = 0; i < params.length; i++) {
+            params[i].style.color = "#545B70"
+        }
+        const title = item.getElementsByTagName("h2");
+        for (let i = 0; i < title.length; i++) {
+            title[i].style.color = "#1B2541"
+        }
         window.document.removeEventListener('mousemove', handleMouseMove);
     }
 
     item.addEventListener('touchmove', function (event) {
         const touch = event.touches[0];
         deltaX = touch.clientX - startX;
-        item.style.transform = `translateX(${deltaX > 200 ? 200 : deltaX < -200 ? -200 : deltaX}px)`;
+        item.style.transform = `translateX(${deltaX > positionLimitX ? positionLimitX : deltaX < -positionLimitX ? -positionLimitX : deltaX}px)`;
+        if (deltaX > positionLimitX - 30 || deltaX < -positionLimitX + 30) {
+
+            const params = item.getElementsByTagName("p");
+            for (let i = 0; i < params.length; i++) {
+                params[i].style.color = "#fff"
+            }
+            const title = item.getElementsByTagName("h2");
+            for (let i = 0; i < title.length; i++) {
+                title[i].style.color = "#fff"
+            }
+            item.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
+            item.style.transition = 'background 0.4s ease-in-out';
+            item.style.backgroundColor = "#ff4444"
+        } else {
+            item.style.boxShadow = "0px 0px 0px rgba(0, 0, 0, 0.5)";
+            item.style.backgroundColor = "#fff"
+            item.style.boxShadow = "none";
+            const params = item.getElementsByTagName("p");
+            for (let i = 0; i < params.length; i++) {
+                params[i].style.color = "#545B70"
+            }
+            const title = item.getElementsByTagName("h2");
+            for (let i = 0; i < title.length; i++) {
+                title[i].style.color = "#1B2541"
+            }
+        }
     });
 
     item.addEventListener('mouseup', resetItem);

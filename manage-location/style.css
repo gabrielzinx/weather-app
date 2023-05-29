@@ -38,6 +38,28 @@
     width: 32px;
 }
 
+.icon-trash {
+    display: none;
+    align-self: flex-start;
+    background-image: url("./assets/icons/trash.png");
+    background-color: #dd3434;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 36px;
+    width: 20%;
+    height: 100%;
+    border-radius: 16px 0px 0px 16px;
+    transition: all 2.8s ease-in;
+}
+
+.disable {
+    display: none;
+}
+
+.enable {
+    display: flex;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -140,7 +162,6 @@ ul li {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-inline: 16px;
     width: 80%;
     height: 80px;
     background: #FFFFFF;
@@ -150,14 +171,20 @@ ul li {
 }
 
 ul li div:nth-child(2) {
+    flex-direction: column;
+    padding-left: 16px;
+}
+
+ul li div:nth-child(3) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-right: 16px;
     width: 40%;
 }
 
-ul li div:nth-child(2) p {
+ul li div:nth-child(3) p {
     text-align: center;
 }
 
