@@ -84,6 +84,32 @@ for (let i = 0; i < itensCities.length; i++) {
     function handleMouseMove(event) {
         deltaX = event.clientX - startX;
         item.style.transform = `translateX(${deltaX > 200 ? 200 : deltaX < -200 ? -200 : deltaX}px)`;
+        if (deltaX > positionLimitX - 30 || deltaX < -positionLimitX + 30) {
+
+            const params = item.getElementsByTagName("p");
+            for (let i = 0; i < params.length; i++) {
+                params[i].style.color = "#fff"
+            }
+            const title = item.getElementsByTagName("h2");
+            for (let i = 0; i < title.length; i++) {
+                title[i].style.color = "#fff"
+            }
+            item.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
+            item.style.transition = 'background 0.4s ease-in-out';
+            item.style.backgroundColor = "#ff4444"
+        } else {
+            item.style.boxShadow = "0px 0px 0px rgba(0, 0, 0, 0.5)";
+            item.style.backgroundColor = "#fff"
+            item.style.boxShadow = "none";
+            const params = item.getElementsByTagName("p");
+            for (let i = 0; i < params.length; i++) {
+                params[i].style.color = "#545B70"
+            }
+            const title = item.getElementsByTagName("h2");
+            for (let i = 0; i < title.length; i++) {
+                title[i].style.color = "#1B2541"
+            }
+        }
     }
 
     function resetItem() {
