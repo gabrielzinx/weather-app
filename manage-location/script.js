@@ -47,10 +47,6 @@ function createElementWeatherCity(dataCity) {
     li.appendChild(div1);
     li.appendChild(div2);
 
-    li.addEventListener("click", () => {
-        window.location.href = "/home/?city=" + dataCity.city_name;
-    });
-
     return li;
 }
 
